@@ -19,10 +19,14 @@ import PathViewer from '../../components/pathViewer';
 import SearchBar from '../../components/searchBar';
 import Settings from '../../components/settings';
 import { defaultSettingsData } from '../../constants/defaultValues';
+import UserAccount from '../../components/userAccount';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const App = () => {
+  const [loggedInUserName, setLoggedInUserName] = useState<string | null>(
+    'Sourav'
+  );
   const [collapsed, setCollapsed] = useState<boolean>(true);
   const [path, setPath] = useState<Path>(getPath(['/', 'Pictures', 'Desktop']));
   const [searchTerm, setSearchTerm] = useState<string>('');
@@ -46,6 +50,15 @@ const App = () => {
   const updateSettingsDataHandler = (updatedData: SettingsData) => {
     console.log(`updated settings data: ${JSON.stringify(updatedData)}`);
     setSettingsData(updatedData);
+  };
+
+  const userLogoutHandler = () => {
+    setLoggedInUserName(null);
+  };
+
+  const switchUserHandler = () => {
+    console.log('switch user');
+    setLoggedInUserName('Amit');
   };
 
   return (
@@ -91,10 +104,20 @@ const App = () => {
           }}>
           <SiteIcon height={40} width={40} />
           <SearchBar style={{ width: '80%' }} onSearch={searchHandler} />
-          <div>
+          <div
+            style={{
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'space-around',
+            }}>
             <Settings
               data={settingsData}
               onUpdateData={updateSettingsDataHandler}
+            />
+            <UserAccount
+              userName={loggedInUserName!}
+              onLogout={userLogoutHandler}
+              onSwitchUser={switchUserHandler}
             />
           </div>
         </Header>
