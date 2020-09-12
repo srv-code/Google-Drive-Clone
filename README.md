@@ -1,12 +1,15 @@
 # Google Drive Clone :file_folder:
-![](https://img.shields.io/badge/pre_release-v0.1-green.svg)
+
+![status](https://img.shields.io/badge/prerelease-v0.1-green.svg)
 
 A clone of the [Google Drive](drive.google.com) along with all the link public sharing options and access features.
 
 ---
 
 ## To Dos
+
 ### Feature set
+
 1. Render general folder and file browsing.
 1. General login/signup.
 1. Path view at the top.
