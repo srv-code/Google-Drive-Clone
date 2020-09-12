@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import './App.css';
-import Header from '../../components/commons/header';
+import Header from '../../components/header';
 import { Path } from '../../interfaces/commons';
 
 const App = () => {
@@ -9,6 +9,7 @@ const App = () => {
   return (
     <div className='container'>
       <Header path={path} />
+      {/* <SideBar /> */}
     </div>
   );
 };
