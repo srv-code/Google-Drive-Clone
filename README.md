@@ -1,44 +1,62 @@
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# Google Drive Clone
 
-## Available Scripts
+A clone of the [Google Drive](drive.google.com) along with all the link public sharing options and access features.
 
-In the project directory, you can run:
+---
 
-### `npm start`
-
-Runs the app in the development mode.<br />
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.<br />
-You will also see any lint errors in the console.
-
-### `npm test`
-
-Launches the test runner in the interactive watch mode.<br />
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
-
-### `npm run build`
-
-Builds the app for production to the `build` folder.<br />
-It correctly bundles React in production mode and optimizes the build for the best performance.
-
-The build is minified and the filenames include the hashes.<br />
-Your app is ready to be deployed!
-
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
-
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
+## To Dos
+### Feature set
+1. Render general folder and file browsing.
+1. General login/signup.
+1. Path view at the top.
+1. Search (all fiies/folders) feature.
+   1. Advanced features:
+      - By color
+      - By type (:file, folder, extension)
+      - Includes trashed items
+1. Trash feature
+1. Options in Side bar:
+   1. New (see for options below)
+   1. Shared with me
+   1. Starred
+   1. Trash
+1. Settings:
+   1. Default view:
+      - List
+      - Icons
+   1. Theme
+      - Light
+      - Dark
+1. Show context options when right clicked at any places (on blank area, on a folder, on a file).
+   1. When clicked on blank area:
+      1. Shows options for upload/create:
+         - New folder
+         - Upload files
+         - Upload folder
+      1. Show navigation options:
+         - Go to parent folder.
+         - Go to home.
+   1. When clicked on a file:
+      1. Shows the following options:
+         - Share
+         - Get shareable link
+         - Move to
+         - Copy to
+         - Star
+         - Rename
+         - Delete
+         - Download
+         - Show details
+   1. When clicked on a folder:
+      1. Shows the following options:
+         - Share
+         - Get shareable link
+         - Move to
+         - Copy to
+         - Star
+         - Rename
+         - Delete
+         - Download
+         - Change color
+         - Show details
+1. Show upload/create options for file/folders.
