@@ -1,6 +1,6 @@
 {
-  "short_name": "React App",
-  "name": "Create React App Sample",
+  "short_name": "Drive",
+  "name": "Drive: Store your files in cloud",
   "icons": [
     {
       "src": "favicon.ico",
