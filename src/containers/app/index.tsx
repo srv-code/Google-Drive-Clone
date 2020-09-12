@@ -44,7 +44,7 @@ const App = () => {
   };
 
   const updateSettingsDataHandler = (updatedData: SettingsData) => {
-    console.log(`updated settings data: ${updatedData}`);
+    console.log(`updated settings data: ${JSON.stringify(updatedData)}`);
     setSettingsData(updatedData);
   };
 
