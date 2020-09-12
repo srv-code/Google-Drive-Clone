@@ -34,7 +34,7 @@ A clone of the [Google Drive](drive.google.com) along with all the link public s
 1. Show context options when right clicked at any places (on blank area, on a folder, on a file).
    1. When clicked on blank area:
       1. Shows options for upload/create:
-         - New folder
+         - Create folder
          - Upload files
          - Upload folder
       1. Show navigation options:

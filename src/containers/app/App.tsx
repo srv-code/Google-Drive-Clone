@@ -4,18 +4,27 @@ import 'antd/dist/antd.css';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
   DesktopOutlined,
+  PlusOutlined,
+  FolderAddOutlined,
+  UploadOutlined,
+  ShareAltOutlined,
+  StarOutlined,
+  DeleteOutlined,
+  FileAddOutlined,
   PieChartOutlined,
   FileOutlined,
   TeamOutlined,
   UserOutlined,
 } from '@ant-design/icons';
 import { Path } from '../../interfaces/commons';
+import { siteName } from '../../constants/names';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const App = () => {
   const [collapsed, setCollapsed] = useState<boolean>(false);
   const [path, setPath] = useState<Path>({ name: '/', type: 'folder' });
+  const footerNote = `${siteName} © ${new Date().getFullYear()}`;
 
   const onCollapse = (collapsed: boolean) => {
     setCollapsed(collapsed);
@@ -26,22 +35,29 @@ const App = () => {
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className='logo' />
         <Menu theme='dark' defaultSelectedKeys={['1']} mode='inline'>
-          <Menu.Item key='1' icon={<PieChartOutlined />}>
-            Option 1
-          </Menu.Item>
-          <Menu.Item key='2' icon={<DesktopOutlined />}>
-            Option 2
-          </Menu.Item>
-          <SubMenu key='sub1' icon={<UserOutlined />} title='User'>
-            <Menu.Item key='3'>Tom</Menu.Item>
-            <Menu.Item key='4'>Bill</Menu.Item>
-            <Menu.Item key='5'>Alex</Menu.Item>
+          <SubMenu key='new' icon={<PlusOutlined />} title='New'>
+            <Menu.Item key='create-folder'>
+              <FolderAddOutlined />
+              Create folder
+            </Menu.Item>
+            <Menu.Item key='upload-files'>
+              <UploadOutlined />
+              Upload files
+            </Menu.Item>
+            <Menu.Item key='upload-folder'>
+              <UploadOutlined />
+              Upload folder
+            </Menu.Item>
           </SubMenu>
-          <SubMenu key='sub2' icon={<TeamOutlined />} title='Team'>
-            <Menu.Item key='6'>Team 1</Menu.Item>
-            <Menu.Item key='8'>Team 2</Menu.Item>
-          </SubMenu>
-          <Menu.Item key='9' icon={<FileOutlined />} />
+          <Menu.Item key='shared-with-me' icon={<ShareAltOutlined />}>
+            Shared with me
+          </Menu.Item>
+          <Menu.Item key='starred' icon={<StarOutlined />}>
+            Starred
+          </Menu.Item>
+          <Menu.Item key='trash' icon={<DeleteOutlined />}>
+            Trash
+          </Menu.Item>
         </Menu>
       </Sider>
       <Layout className='site-layout'>
@@ -57,9 +73,7 @@ const App = () => {
             Bill is a cat.
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>
-          Ant Design ©2018 Created by Ant UED
-        </Footer>
+        <Footer style={{ textAlign: 'center' }}>{footerNote}</Footer>
       </Layout>
     </Layout>
   );
