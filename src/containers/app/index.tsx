@@ -12,11 +12,13 @@ import {
   StarOutlined,
   DeleteOutlined,
 } from '@ant-design/icons';
-import { Path } from '../../interfaces/commons';
+import { Path, SettingsData } from '../../interfaces/commons';
 import { siteName } from '../../constants/names';
 import { getPath } from '../../utils/commons';
 import PathViewer from '../../components/pathViewer';
 import SearchBar from '../../components/searchBar';
+import Settings from '../../components/settings/Settings';
+import { defaultSettingsData } from '../../constants/defaultValues';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
@@ -24,6 +26,9 @@ const App = () => {
   const [collapsed, setCollapsed] = useState<boolean>(true);
   const [path, setPath] = useState<Path>(getPath(['/', 'Pictures', 'Desktop']));
   const [searchTerm, setSearchTerm] = useState<string>('');
+  const [settingsData, setSettingsData] = useState<SettingsData>(
+    defaultSettingsData
+  );
 
   const footerNote = `${siteName} © ${new Date().getFullYear()}`;
 
@@ -36,6 +41,11 @@ const App = () => {
   const searchHandler = (term: string) => {
     console.log(`Searched='${term}'`);
     setSearchTerm(term);
+  };
+
+  const updateSettingsDataHandler = (updatedData: SettingsData) => {
+    console.log(`updated settings data: ${updatedData}`);
+    setSettingsData(updatedData);
   };
 
   return (
@@ -81,6 +91,12 @@ const App = () => {
           }}>
           <SiteIcon height={40} width={40} />
           <SearchBar style={{ width: '80%' }} onSearch={searchHandler} />
+          <div>
+            <Settings
+              data={settingsData}
+              onUpdateData={updateSettingsDataHandler}
+            />
+          </div>
         </Header>
         <Content style={{ margin: '0 16px' }}>
           <PathViewer

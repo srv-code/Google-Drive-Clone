@@ -25,7 +25,7 @@ A clone of the [Google Drive](drive.google.com) along with all the link public s
    1. Starred
    1. Trash
 1. Settings:
-   1. Default view:
+   1. View:
       - List
       - Icons
    1. Theme
