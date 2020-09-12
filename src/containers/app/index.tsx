@@ -74,13 +74,11 @@ const App = () => {
           <SiteIcon height={40} width={40} />
         </Header>
         <Content style={{ margin: '0 16px' }}>
-          {`path: ${getPathString(path)}`}
-          <PathViewer path={path} onFolderClick={onNavigateToPathHandler} />
-
-          <Breadcrumb style={{ margin: '16px 0' }}>
-            <Breadcrumb.Item>User</Breadcrumb.Item>
-            <Breadcrumb.Item>Bill</Breadcrumb.Item>
-          </Breadcrumb>
+          <PathViewer
+            style={{ margin: '16px 0' }}
+            path={path}
+            onFolderClick={onNavigateToPathHandler}
+          />
           <div
             className='site-layout-background'
             style={{ padding: 24, minHeight: 360 }}>

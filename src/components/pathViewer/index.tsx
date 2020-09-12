@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import { Path } from '../../interfaces/commons';
 import { Breadcrumb } from 'antd';
 import {
@@ -6,11 +6,12 @@ import {
   FolderOutlined,
   CaretRightOutlined,
 } from '@ant-design/icons';
-import { getPathString, getPath } from '../../utils/commons';
+import { getPath } from '../../utils/commons';
 
 interface PathViewerProps {
   path: Path;
   onFolderClick: (path: Path) => void;
+  style?: CSSProperties;
 }
 
 const PathViewer: React.FC<PathViewerProps> = props => {
@@ -42,7 +43,7 @@ const PathViewer: React.FC<PathViewerProps> = props => {
   };
 
   return (
-    <div className='container'>
+    <div className='container' style={props.style}>
       <Breadcrumb separator={<CaretRightOutlined />}>
         {props.path.components.map((comp: string, index: number) => (
           <Breadcrumb.Item
