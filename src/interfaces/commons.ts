@@ -1,5 +1,4 @@
 export interface Path {
-  name: string;
-  parents?: string[];
-  type: 'file' | 'folder';
+  components: string[];
+  isFile: boolean;
 }

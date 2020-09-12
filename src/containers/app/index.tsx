@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import './App.css';
+import './style.css';
 import 'antd/dist/antd.css';
 import { ReactComponent as SiteIcon } from '../../assets/images/site-icon.svg';
 import { Layout, Menu, Breadcrumb } from 'antd';
@@ -14,17 +14,21 @@ import {
 } from '@ant-design/icons';
 import { Path } from '../../interfaces/commons';
 import { siteName } from '../../constants/names';
+import { getPath, getPathString } from '../../utils/commons';
+import PathViewer from '../../components/pathViewer';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const App = () => {
-  const [collapsed, setCollapsed] = useState<boolean>(false);
-  const [path, setPath] = useState<Path>({ name: '/', type: 'folder' });
+  const [collapsed, setCollapsed] = useState<boolean>(true);
+  const [path, setPath] = useState<Path>(getPath(['/', 'Pictures', 'Desktop']));
   const footerNote = `${siteName} © ${new Date().getFullYear()}`;
 
   const onCollapse = (collapsed: boolean) => {
     setCollapsed(collapsed);
   };
+
+  const onNavigateToPathHandler = (path: Path) => setPath(path);
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -60,8 +64,19 @@ const App = () => {
         </Menu>
       </Sider>
       <Layout className='site-layout'>
-        <Header className='site-layout-background' style={{ padding: 0 }} />
+        <Header
+          className='header-container'
+          style={{
+            padding: 10,
+            alignItems: 'center',
+            backgroundColor: '#d2e1fe',
+          }}>
+          <SiteIcon height={40} width={40} />
+        </Header>
         <Content style={{ margin: '0 16px' }}>
+          {`path: ${getPathString(path)}`}
+          <PathViewer path={path} onFolderClick={onNavigateToPathHandler} />
+
           <Breadcrumb style={{ margin: '16px 0' }}>
             <Breadcrumb.Item>User</Breadcrumb.Item>
             <Breadcrumb.Item>Bill</Breadcrumb.Item>
@@ -69,7 +84,7 @@ const App = () => {
           <div
             className='site-layout-background'
             style={{ padding: 24, minHeight: 360 }}>
-            Bill is a cat.
+            {'<BODY>'}
           </div>
         </Content>
         <Footer style={{ textAlign: 'center' }}>{footerNote}</Footer>

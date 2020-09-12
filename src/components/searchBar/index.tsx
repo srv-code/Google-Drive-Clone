@@ -4,11 +4,11 @@ import { Path } from '../../interfaces/commons';
 import { ReactComponent as SiteIcon } from '../../assets/images/site-icon.svg';
 import { siteName } from '../../constants/names';
 
-interface HeaderProps {
+interface SearchBarProps {
   path: Path;
 }
 
-const Header: React.FC<HeaderProps> = props => {
+const SearchBar: React.FC<SearchBarProps> = props => {
   return (
     <div className='container'>
       <div className='titleGroup'>
@@ -23,4 +23,4 @@ const Header: React.FC<HeaderProps> = props => {
   );
 };
 
-export default Header;
+export default SearchBar;
