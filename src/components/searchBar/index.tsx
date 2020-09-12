@@ -1,25 +1,25 @@
-import React from 'react';
+import React, { CSSProperties } from 'react';
 import './style.css';
-import { Path } from '../../interfaces/commons';
-import { ReactComponent as SiteIcon } from '../../assets/images/site-icon.svg';
-import { siteName } from '../../constants/names';
+import { Input } from 'antd';
+
+const { Search } = Input;
 
 interface SearchBarProps {
-  path: Path;
+  onSearch: (term: string) => void;
+  showLoading?: boolean;
+  style?: CSSProperties;
 }
 
 const SearchBar: React.FC<SearchBarProps> = props => {
   return (
-    <div className='container'>
-      <div className='titleGroup'>
-        <SiteIcon height={40} width={40} />
-        <span className='titleText'>{siteName}</span>
-      </div>
-
-      {/* <SearchBar /> */}
-      {/* settings */}
-      {/* user profile dropdown */}
-    </div>
+    <Search
+      size='large'
+      style={props.style}
+      placeholder='Search files and folders...'
+      onSearch={props.onSearch}
+      enterButton
+      loading={props.showLoading}
+    />
   );
 };
 

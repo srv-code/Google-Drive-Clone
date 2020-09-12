@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import './style.css';
 import 'antd/dist/antd.css';
 import { ReactComponent as SiteIcon } from '../../assets/images/site-icon.svg';
-import { Layout, Menu, Breadcrumb } from 'antd';
+import { Layout, Menu } from 'antd';
 import {
   HomeOutlined,
   PlusOutlined,
@@ -14,14 +14,17 @@ import {
 } from '@ant-design/icons';
 import { Path } from '../../interfaces/commons';
 import { siteName } from '../../constants/names';
-import { getPath, getPathString } from '../../utils/commons';
+import { getPath } from '../../utils/commons';
 import PathViewer from '../../components/pathViewer';
+import SearchBar from '../../components/searchBar';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 const App = () => {
   const [collapsed, setCollapsed] = useState<boolean>(true);
   const [path, setPath] = useState<Path>(getPath(['/', 'Pictures', 'Desktop']));
+  const [searchTerm, setSearchTerm] = useState<string>('');
+
   const footerNote = `${siteName} © ${new Date().getFullYear()}`;
 
   const onCollapse = (collapsed: boolean) => {
@@ -29,6 +32,11 @@ const App = () => {
   };
 
   const onNavigateToPathHandler = (path: Path) => setPath(path);
+
+  const searchHandler = (term: string) => {
+    console.log(`Searched='${term}'`);
+    setSearchTerm(term);
+  };
 
   return (
     <Layout style={{ minHeight: '100vh' }}>
@@ -65,13 +73,14 @@ const App = () => {
       </Sider>
       <Layout className='site-layout'>
         <Header
-          className='header-container'
           style={{
-            padding: 10,
+            display: 'flex',
+            justifyContent: 'space-around',
             alignItems: 'center',
             backgroundColor: '#d2e1fe',
           }}>
           <SiteIcon height={40} width={40} />
+          <SearchBar style={{ width: '80%' }} onSearch={searchHandler} />
         </Header>
         <Content style={{ margin: '0 16px' }}>
           <PathViewer
