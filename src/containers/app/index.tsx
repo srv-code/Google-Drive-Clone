@@ -98,21 +98,25 @@ const App = () => {
         <Header
           style={{
             display: 'flex',
-            justifyContent: 'space-around',
+            justifyContent: 'space-evenly',
             alignItems: 'center',
             backgroundColor: '#d2e1fe',
           }}>
           <SiteIcon height={40} width={40} />
-          <SearchBar style={{ width: '80%' }} onSearch={searchHandler} />
+          <SearchBar
+            style={{ flex: 1, marginLeft: '2vw', marginRight: '2vw' }}
+            onSearch={searchHandler}
+          />
           <div
             style={{
               display: 'flex',
               alignItems: 'center',
-              justifyContent: 'space-around',
+              justifyContent: 'space-between',
             }}>
             <Settings
               data={settingsData}
               onUpdateData={updateSettingsDataHandler}
+              style={{ marginRight: '0.5vw' }}
             />
             <UserAccount
               userName={loggedInUserName!}
