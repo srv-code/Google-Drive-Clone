@@ -17,7 +17,7 @@ import { siteName } from '../../constants/names';
 import { getPath } from '../../utils/commons';
 import PathViewer from '../../components/pathViewer';
 import SearchBar from '../../components/searchBar';
-import Settings from '../../components/settings/Settings';
+import Settings from '../../components/settings';
 import { defaultSettingsData } from '../../constants/defaultValues';
 const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
