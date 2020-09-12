@@ -1,20 +1,16 @@
 import React, { useState } from 'react';
 import './App.css';
 import 'antd/dist/antd.css';
+import { ReactComponent as SiteIcon } from '../../assets/images/site-icon.svg';
 import { Layout, Menu, Breadcrumb } from 'antd';
 import {
-  DesktopOutlined,
+  HomeOutlined,
   PlusOutlined,
   FolderAddOutlined,
   UploadOutlined,
   ShareAltOutlined,
   StarOutlined,
   DeleteOutlined,
-  FileAddOutlined,
-  PieChartOutlined,
-  FileOutlined,
-  TeamOutlined,
-  UserOutlined,
 } from '@ant-design/icons';
 import { Path } from '../../interfaces/commons';
 import { siteName } from '../../constants/names';
@@ -34,7 +30,10 @@ const App = () => {
     <Layout style={{ minHeight: '100vh' }}>
       <Sider collapsible collapsed={collapsed} onCollapse={onCollapse}>
         <div className='logo' />
-        <Menu theme='dark' defaultSelectedKeys={['1']} mode='inline'>
+        <Menu theme='dark' defaultSelectedKeys={['home']} mode='inline'>
+          <Menu.Item key='home' icon={<HomeOutlined />}>
+            Home
+          </Menu.Item>
           <SubMenu key='new' icon={<PlusOutlined />} title='New'>
             <Menu.Item key='create-folder'>
               <FolderAddOutlined />
