@@ -1,4 +1,5 @@
-# Google Drive Clone
+# Google Drive Clone :file_folder:
+![](https://img.shields.io/badge/pre_release-v0.1-green.svg)
 
 A clone of the [Google Drive](drive.google.com) along with all the link public sharing options and access features.
 
