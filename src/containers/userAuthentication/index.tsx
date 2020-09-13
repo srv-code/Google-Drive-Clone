@@ -1,19 +1,14 @@
 import React, { useState } from 'react';
-import {
-  Form,
-  Input,
-  Button,
-  Checkbox,
-  Radio,
-  Tooltip,
-  AutoComplete,
-} from 'antd';
+import { Form, Input, Button, Checkbox, Radio, Tooltip, Layout } from 'antd';
 import {
   UserOutlined,
   LockOutlined,
   QuestionCircleOutlined,
 } from '@ant-design/icons';
 import { RadioChangeEvent } from 'antd/lib/radio';
+import { pageFooterNote } from '../../constants/names';
+
+const { Content, Footer } = Layout;
 
 interface UserAuthenticationProps {}
 
@@ -77,9 +72,8 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
       <Form.Item
         name='password'
         rules={[{ required: true, message: 'Please input your Password!' }]}>
-        <Input
+        <Input.Password
           prefix={<LockOutlined className='site-form-item-icon' />}
-          type='password'
           placeholder='Password'
         />
       </Form.Item>
@@ -223,8 +217,14 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
     </Form>
   );
 
-  return (
-    <div>
+  const renderFormSwitcher = () => (
+    <div
+      style={{
+        display: 'flex',
+        flex: 1,
+        justifyContent: 'center',
+        marginBottom: '2vh',
+      }}>
       <Radio.Group
         options={loginOptions}
         onChange={viewChangeHandler}
@@ -232,9 +232,31 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
         optionType='button'
         buttonStyle='solid'
       />
-
-      {view === 'login' ? renderLoginView() : renderSignupView()}
     </div>
+  );
+
+  return (
+    <Layout style={{ minHeight: '100vh' }}>
+      <Content
+        style={{
+          display: 'flex',
+          flex: 1,
+          justifyContent: 'center',
+          alignItems: 'center',
+        }}>
+        <div
+          style={{
+            width: '30%',
+            marginTop: '10vh',
+            backgroundColor: 'white',
+            padding: '2vw 5vh',
+          }}>
+          {renderFormSwitcher()}
+          {view === 'login' ? renderLoginView() : renderSignupView()}
+        </div>
+      </Content>
+      <Footer style={{ textAlign: 'center' }}>{pageFooterNote}</Footer>
+    </Layout>
   );
 };
 
