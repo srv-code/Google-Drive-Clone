@@ -273,14 +273,14 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
         }}>
         <p
           style={{
-            color: '#6262ff',
-            fontSize: '5vh',
             display: 'flex',
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <SiteIcon height={'8vh'} width={'8vw'} title='Drive' />
-          <span>Welcome to Drive</span>
+          <SiteIcon height={'5vh'} width={'5vw'} title='Drive' />
+          <span style={{ color: '#6262ff', fontSize: '5vh' }}>
+            Welcome to Drive
+          </span>
         </p>
         <div
           style={{
