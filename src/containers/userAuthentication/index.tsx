@@ -265,12 +265,13 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
             justifyContent: 'center',
             alignItems: 'center',
           }}>
-          <SiteIcon height={80} width={80} style={{ marginRight: '1vw' }} />
-          Welcome to Drive
+          <SiteIcon height={'8vh'} width={'8vw'} title='Drive' />
+          <span>Welcome to Drive</span>
         </p>
         <div
           style={{
-            width: '30%',
+            display: 'flex',
+            flexDirection: 'column',
             backgroundColor: 'white',
             padding: '3vh 3vw 0 3vw',
             boxShadow: '0px 0px 10px lightgray',
