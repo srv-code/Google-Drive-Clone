@@ -1,5 +1,11 @@
 import React, { CSSProperties, useState } from 'react';
-import { SettingOutlined } from '@ant-design/icons';
+import {
+  SettingOutlined,
+  UnorderedListOutlined,
+  AppstoreOutlined,
+  CheckOutlined,
+  CloseOutlined,
+} from '@ant-design/icons';
 import { SettingsData } from '../../interfaces/commons';
 import { Modal, Switch, Radio } from 'antd';
 import { RadioChangeEvent } from 'antd/lib/radio';
@@ -47,9 +53,26 @@ const Settings: React.FC<SettingsProps> = props => {
     });
   };
 
+  const renderRadioButton = (label: string) => {
+    return (
+      <span>
+        <span style={{ marginRight: 10 }}>
+          {label === 'List' ? <UnorderedListOutlined /> : <AppstoreOutlined />}
+        </span>
+        <span>{label}</span>
+      </span>
+    );
+  };
+
   const viewOptions = [
-    { label: 'List', value: 'list' },
-    { label: 'Icon', value: 'icon' },
+    {
+      label: renderRadioButton('List'),
+      value: 'list',
+    },
+    {
+      label: renderRadioButton('Icon'),
+      value: 'icon',
+    },
   ];
 
   return (
@@ -68,7 +91,12 @@ const Settings: React.FC<SettingsProps> = props => {
           <p style={styles.settingsPropertyRow}>
             <span style={styles.settingPropertyName}>Dark Theme:</span>
             <span>
-              <Switch defaultChecked onChange={switchDarkThemeHandler} />
+              <Switch
+                checkedChildren={<CheckOutlined />}
+                unCheckedChildren={<CloseOutlined />}
+                onChange={switchDarkThemeHandler}
+                checked={data.theme === 'dark'}
+              />
             </span>
           </p>
           <p style={styles.settingsPropertyRow}>
