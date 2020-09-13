@@ -9,7 +9,6 @@ import { Menu, Dropdown } from 'antd';
 interface UserAccountProps {
   userName: string;
   onLogout: () => void;
-  onSwitchUser: () => void;
   style?: CSSProperties;
 }
 
@@ -25,12 +24,6 @@ const UserAccount: React.FC<UserAccountProps> = props => {
         {props.userName}
       </p>
       <hr />
-      <Menu.Item style={styles.userMenuItemRow}>
-        <UserSwitchOutlined />
-        <a href='' onClick={props.onSwitchUser}>
-          Switch User
-        </a>
-      </Menu.Item>
       <Menu.Item style={styles.userMenuItemRow}>
         <LogoutOutlined />
         <a href='' onClick={props.onLogout}>
