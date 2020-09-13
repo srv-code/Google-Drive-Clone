@@ -7,6 +7,7 @@ import {
 } from '@ant-design/icons';
 import { RadioChangeEvent } from 'antd/lib/radio';
 import { pageFooterNote } from '../../constants/names';
+import { ReactComponent as SiteIcon } from '../../assets/images/site-icon.svg';
 
 const { Content, Footer } = Layout;
 
@@ -251,10 +252,22 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
       <Content
         style={{
           display: 'flex',
-          flex: 1,
+          flex: 4,
           justifyContent: 'center',
           alignItems: 'center',
+          flexDirection: 'column',
         }}>
+        <p
+          style={{
+            color: '#6262ff',
+            fontSize: '5vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
+          <SiteIcon height={80} width={80} style={{ marginRight: '1vw' }} />
+          Welcome to Drive
+        </p>
         <div
           style={{
             width: '30%',
