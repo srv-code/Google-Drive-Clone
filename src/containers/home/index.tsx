@@ -126,7 +126,9 @@ const Home: React.FC<HomeProps> = props => {
             {'<BODY>'}
           </div>
         </Content>
-        <Footer style={{ textAlign: 'center' }}>{pageFooterNote}</Footer>
+        <Footer style={{ textAlign: 'center', color: 'gray' }}>
+          {pageFooterNote}
+        </Footer>
       </Layout>
     </Layout>
   );

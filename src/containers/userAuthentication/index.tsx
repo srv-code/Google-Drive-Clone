@@ -88,18 +88,29 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
       </Form.Item>
 
       <Form.Item>
-        <Button type='primary' htmlType='submit' className='login-form-button'>
-          Log in
-        </Button>
-        <p>
-          Don't have an account?
+        <div
+          style={{
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'center',
+            alignItems: 'center',
+          }}>
           <Button
-            style={{ marginLeft: -10 }}
-            type='link'
-            onClick={() => setView('signup')}>
-            Sign up
+            type='primary'
+            htmlType='submit'
+            className='login-form-button'>
+            Log in
           </Button>
-        </p>
+          <p>
+            Don't have an account?
+            <Button
+              style={{ marginLeft: -10 }}
+              type='link'
+              onClick={() => setView('signup')}>
+              Sign up
+            </Button>
+          </p>
+        </div>
       </Form.Item>
     </Form>
   );
@@ -111,15 +122,6 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
       name='register'
       onFinish={onFormFillFinishHandler}
       scrollToFirstError>
-      <p>
-        Already have an account?
-        <Button
-          style={{ marginLeft: -10 }}
-          type='link'
-          onClick={() => setView('login')}>
-          Login
-        </Button>
-      </p>
       <Form.Item
         name='email'
         label='E-mail'
@@ -213,6 +215,15 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
         <Button type='primary' htmlType='submit'>
           Sign up
         </Button>
+        <p>
+          Already have an account?
+          <Button
+            style={{ marginLeft: -10 }}
+            type='link'
+            onClick={() => setView('login')}>
+            Login
+          </Button>
+        </p>
       </Form.Item>
     </Form>
   );
@@ -247,15 +258,17 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
         <div
           style={{
             width: '30%',
-            marginTop: '10vh',
             backgroundColor: 'white',
-            padding: '2vw 5vh',
+            padding: '3vh 3vw 0 3vw',
+            boxShadow: '0px 0px 10px lightgray',
           }}>
           {renderFormSwitcher()}
           {view === 'login' ? renderLoginView() : renderSignupView()}
         </div>
       </Content>
-      <Footer style={{ textAlign: 'center' }}>{pageFooterNote}</Footer>
+      <Footer style={{ textAlign: 'center', color: 'gray' }}>
+        {pageFooterNote}
+      </Footer>
     </Layout>
   );
 };
