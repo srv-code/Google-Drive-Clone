@@ -11,7 +11,7 @@ import {
   StarOutlined,
   DeleteOutlined,
 } from '@ant-design/icons';
-import { Path, SettingsData } from '../../interfaces/commons';
+import { Path, SettingsData, UserDetails } from '../../interfaces/commons';
 import { pageFooterNote } from '../../constants/names';
 import { getPath } from '../../utils/commons';
 import PathViewer from '../../components/pathViewer';
@@ -23,7 +23,7 @@ const { Header, Content, Footer, Sider } = Layout;
 const { SubMenu } = Menu;
 
 interface HomeProps {
-  userName: string;
+  user: UserDetails;
   onUserLogout: () => void;
 }
 
@@ -109,7 +109,7 @@ const Home: React.FC<HomeProps> = props => {
               style={{ marginRight: '0.5vw' }}
             />
             <UserAccount
-              userName={props.userName}
+              userName={`${props.user.firstName} ${props.user.lastName}`}
               onLogout={props.onUserLogout}
             />
           </div>

@@ -1,5 +1,14 @@
 import React, { useState } from 'react';
-import { Form, Input, Button, Checkbox, Radio, Tooltip, Layout } from 'antd';
+import {
+  Form,
+  Input,
+  Button,
+  Checkbox,
+  Radio,
+  Tooltip,
+  Layout,
+  message,
+} from 'antd';
 import {
   UserOutlined,
   LockOutlined,
@@ -8,13 +17,20 @@ import {
 import { RadioChangeEvent } from 'antd/lib/radio';
 import { pageFooterNote } from '../../constants/names';
 import { ReactComponent as SiteIcon } from '../../assets/images/site-icon.svg';
+import { userLogin } from '../../apis/auth/UserAuthentication';
+import { UserDetails } from '../../interfaces/commons';
 
 const { Content, Footer } = Layout;
 
-interface UserAuthenticationProps {}
+interface UserAuthenticationProps {
+  setUser: (user?: UserDetails) => void;
+}
 
 const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
   const [view, setView] = useState<'login' | 'signup'>('login');
+  const [isAuthenticationInProgress, setIsAuthenticationInProgress] = useState<
+    boolean
+  >(false);
   const [form] = Form.useForm();
 
   const loginOptions = [
@@ -22,8 +38,24 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
     { label: 'Signup', value: 'signup' },
   ];
 
+  // TODO convert to async call
+  const userLoginHandler = (
+    name: string,
+    password: string
+  ): UserDetails | undefined => {
+    return userLogin(name, password);
+  };
+
   const onFormFillFinishHandler = (data: any) => {
+    // TODO Do form validation also using formik
     console.log('Received values of form: ', data);
+    setIsAuthenticationInProgress(true);
+    let user = userLoginHandler(data.loginUsername, data.loginPassword);
+    setIsAuthenticationInProgress(false);
+    if (user) {
+      props.setUser(user);
+      message.success(`Login successful as ${user.firstName} ${user.lastName}`);
+    } else message.error(`Invalid user credentials!`);
   };
 
   const viewChangeHandler = (event: RadioChangeEvent) => {
@@ -72,6 +104,7 @@ const UserAuthentication: React.FC<UserAuthenticationProps> = props => {
               alignItems: 'center',
             }}>
             <Button
+              loading={isAuthenticationInProgress}
               type='primary'
               htmlType='submit'
               className='login-form-button'>

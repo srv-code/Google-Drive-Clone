@@ -3,20 +3,23 @@ import './style.css';
 import 'antd/dist/antd.css';
 import UserAuthentication from '../userAuthentication';
 import Home from '../home';
+import { UserDetails } from '../../interfaces/commons';
 
 const App = () => {
-  const [userName, setUserName] = useState<string | undefined>();
+  const [user, setUser] = useState<UserDetails>();
 
   const userLogoutHandler = () => {
-    setUserName(undefined);
+    setUser(undefined);
   };
+
+  const userLoginHandler = (userDetails?: UserDetails) => setUser(userDetails);
 
   return (
     <>
-      {userName ? (
-        <Home userName={userName} onUserLogout={userLogoutHandler} />
+      {user ? (
+        <Home user={user} onUserLogout={userLogoutHandler} />
       ) : (
-        <UserAuthentication />
+        <UserAuthentication setUser={userLoginHandler} />
       )}
     </>
   );
